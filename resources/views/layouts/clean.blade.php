@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="assets/css/app.css" />
 </head>
 
-<body class="{{ $bodyClass ?? '' }}">
+<body @isset($bodyClass) class="{{ $bodyClass }}" @endisset>
 
     @yield('childContent')
 

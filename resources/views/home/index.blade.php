@@ -801,3 +801,16 @@
         <!--/ New Cars -->
     </main>
 @endsection
+
+
+@section('FooterLinks')
+    @parent
+    <div class="container">
+        <div class="footer-links">
+            <a href="/about.html">About Us</a>
+            <a href="/contact.html">Contact Us</a>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/terms-of-service.html">Terms of Service</a>
+        </div>
+    </div>
+@endsection
