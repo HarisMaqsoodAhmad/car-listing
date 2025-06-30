@@ -8,7 +8,7 @@
 ])
 
 <div class="car-item card">
-    <a href="/view.html">
+    <a href="{{ route('cars.show', 1) }}">
         @if ($product_image_url)
             <img src="{{ $product_image_url }}" alt="" class="car-item-img rounded-t" />
         @endif
