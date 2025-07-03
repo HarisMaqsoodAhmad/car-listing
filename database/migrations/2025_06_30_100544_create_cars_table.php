@@ -22,7 +22,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->foreignId('car_type_id')->constrained('car_types')->onDelete('cascade');
             $table->foreignId('fuel_type_id')->constrained('fuel_types')->onDelete('cascade');
-            $table->foreignId('city_id')->contrained('cities')->onDelete('cascade');
+            $table->foreignId('city_id')->contrained('4')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('maker_id')->constrained('makers')->onDelete('cascade');
             $table->foreignId('model_id')->constrained('models')->onDelete('cascade');

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name', 45);
             $table->foreignId('maker_id')->constrained('makers')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
