@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Car extends Model
@@ -25,4 +26,15 @@ class Car extends Model
         'model_id',
         'published_at',
     ];
+
+    public function features(): HasOne
+    {
+        return $this->hasOne(CarFeature::class);
+    }
+
+    public function primaryImage()
+    {
+        return $this->hasOne(CarImage::class)
+            ->oldestOfMany('position');
+    }
 }
