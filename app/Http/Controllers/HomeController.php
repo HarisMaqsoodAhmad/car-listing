@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Car;
-use App\Models\CarFeature;
-use App\Models\CarImage;
-use App\Models\CarType;
+use App\Models\Maker;
+use App\Models\User;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $makers = Maker::factory()
+            ->count(1)
+            ->hasModels(1, ['name' => 'Model 1'])
+            ->create();
+
+        dd($makers);
+
         return view('home.index');
     }
 }
