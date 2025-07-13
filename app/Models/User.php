@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function favouredCars(): BelongsToMany
     {
-        return $this->belongsToMany(Car::class, 'favourite_cars')->withTimestamps();
+        return $this->belongsToMany(Car::class, 'favourite_cars');
     }
 
     public function cars(): HasMany

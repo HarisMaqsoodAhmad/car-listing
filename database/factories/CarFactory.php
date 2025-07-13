@@ -3,6 +3,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Maker;
+use App\Models\Model;
+use App\Models\CarType;
+use App\Models\FuelType;
+use App\Models\City;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Car>
