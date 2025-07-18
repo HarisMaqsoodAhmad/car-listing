@@ -1,21 +1,17 @@
-@props([
-    'location' => '',
-    'product_name' => '',
-    'product_price' => '',
-    'product_image_url' => '',
-    'product_year' => '',
-    'product_tags' => [],
-])
+@props(['car'])
+
+{{-- This component displays a single car item. It expects a car model to be passed as a prop. --}}
 
 <div class="car-item card">
-    <a href="{{ route('cars.show', 1) }}">
-        @if ($product_image_url)
-            <img src="{{ $product_image_url }}" alt="" class="car-item-img rounded-t" />
+    <a href="{{ route('cars.show', $car) }}">
+        @if ($car->primaryImage->image_path)
+            <img src="{{ $car->primaryImage->image_path }}" alt="" class="car-item-img rounded-t" />
+            {{-- <img src="/assets/img/cars/Lexus-RX200t-2016/1.jpeg" alt="" class="car-item-img rounded-t" /> --}}
         @endif
     </a>
     <div class="p-medium">
         <div class="flex items-center justify-between">
-            <small class="m-0 text-muted">{{ $location }}</small>
+            <small class="m-0 text-muted">{{ $car->city->name }}</small>
             <button class="btn-heart">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" style="width: 20px">
@@ -24,13 +20,12 @@
                 </svg>
             </button>
         </div>
-        <h2 class="car-item-title">{{ $product_year }} - {{ $product_name }}</h2>
-        <p class="car-item-price">{{ $product_price }}</p>
+        <h2 class="car-item-title">{{ $car->year }} - {{ $car->maker->name }}</h2>
+        <p class="car-item-price">${{ $car->price }}</p>
         <hr />
         <p class="m-0">
-            @foreach ($product_tags as $tag)
-                <span class="car-item-badge">{{ $tag }}</span>
-            @endforeach
+                <span class="car-item-badge">{{ $car->carType->name }}</span>
+                <span class="car-item-badge">{{ $car->fuelType->name }}</span>
         </p>
     </div>
 </div>

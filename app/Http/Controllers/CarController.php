@@ -14,7 +14,9 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::get();
+        $cars = Car::limit(10)
+            ->orderBy('published_at', 'desc')
+            ->get();
 
         return view('cars.index', ['cars' => $cars]);
     }
@@ -40,7 +42,7 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        return view('cars.show');
+        return view('cars.show', ['car' => $car]);
     }
 
     /**
@@ -67,8 +69,23 @@ class CarController extends Controller
         //
     }
 
-    public function search()
+    public function search(Request $request)
     {
-        return view('cars.search');
+        $query = Car::where('published_at', '<=', now())
+            ->limit(30);
+
+        if ($request->has('sort')) {
+            $query->orderBy('price', $request->input('sort', 'asc'));
+        } else {
+            $query->orderBy('published_at', 'desc');
+        }
+
+        $cars = $query->get();
+        $totalCars = $query->count();
+
+        return view('cars.search', [
+            'cars' => $cars,
+            'totalCars' => $totalCars,
+        ]);
     }
 }

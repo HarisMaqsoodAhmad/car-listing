@@ -6,11 +6,11 @@
 
     <main>
         <!-- Find a car form -->
-        <x-search-form action="/search.php" method="GET" />
+        <x-search-form action="{{ route('cars.search') }}" method="GET" />
         <!--/ Find a car form -->
 
         <!-- New Cars -->
-        <x-cars-grid />
+        <x-cars-grid :$cars />
         <!--/ New Cars -->
     </main>
 

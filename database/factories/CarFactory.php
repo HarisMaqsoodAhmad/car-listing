@@ -28,7 +28,7 @@ class CarFactory extends Factory
                 return Model::where('maker_id', $attributes['maker_id'])->inRandomOrder()->first()->id;
             },
             'year' => $this->faker->numberBetween(2000, 2025),
-            'price' => $this->faker->randomFloat(2, 100, 100000),
+            'price' => $this->faker->randomFloat(2, 100, 1000),
             'vin' => $this->faker->unique()->regexify('[A-Z]{3}[0-9]{6}'),
             'mileage' => $this->faker->numberBetween(1000, 100000),
             'description' => $this->faker->paragraph,

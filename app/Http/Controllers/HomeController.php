@@ -11,18 +11,12 @@ class HomeController extends Controller
 {
     public function index()
     {
+        // Fetching the latest cars
+        $cars = Car::where('published_at', '<=', now())
+            ->limit(15)
+            ->orderBy('published_at', 'desc')
+            ->get();
 
-        // Create Makers and Models
-        $makers = Maker::factory()->count(5)
-            ->has(Model::factory()->count(3))
-            ->create();
-
-        $data = User::factory()
-            ->has(Car::factory()->count(5), 'favouredCars')
-            ->create();
-
-        dd($data);
-
-        return view('home.index');
+        return view('home.index', ['cars' => $cars]);
     }
 }
